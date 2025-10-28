@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
+import ProductCard from "../Components/ProductCard";
 import img1 from "../assets/img1.webp";
 
 // 👇 STEP 1: Dummy Data based on the image provided - इसे export भी करें

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
-import ProductCard from '../components/ProductCard'; 
+import ProductCard from '../Components/ProductCard'; 
 // Note: आपको अपनी इमेजेस को यहाँ भी import करना होगा, 
 // या सुनिश्चित करना होगा कि ProductCard में जो URL आप दे रहे हैं, वह सही है।
 

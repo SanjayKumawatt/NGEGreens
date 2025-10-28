@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../Components/ProductCard';
 
 import img1 from "../assets/aromaticherb/img1.avif";
 import img2 from "../assets/aromaticherb/img2.avif";

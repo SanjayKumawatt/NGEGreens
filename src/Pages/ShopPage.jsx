@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../Components/ProductCard';
 
 // 👇 STEP 1: Import ALL product data arrays
-import { sliderProducts as vegetableSliderData } from '../components/ProductSliderSection';
-import { flowerSliderProducts as flowerSliderData } from '../components/FlowerSeedsSlider';
+import { sliderProducts as vegetableSliderData } from '../Components/ProductSliderSection';
+import { flowerSliderProducts as flowerSliderData } from '../Components/FlowerSeedsSlider';
 import { typesOfVegetableProducts } from './TypesOfVegetableSeedsPage';
 import { vegetableSeedsSeasonWiseProducts } from './VegetableSeedsSeasonWisePage';
 import { vegetableSeedsComboProducts } from './VegetableSeedsComboPage';

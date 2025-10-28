@@ -15,6 +15,8 @@ const AppLayout = () => {
     // सुनिश्चित करें कि price NUMERIC हो, भले ही यह डेटा में string हो
     const numericPrice = Number(productToAdd.price);
 
+
+
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.id === productToAdd.id);
 
@@ -31,16 +33,28 @@ const AppLayout = () => {
     });
   };
 
+
   // 2. [NEW] handleRemoveFromCart: डिलीट बटन के लिए
   const handleRemoveFromCart = (productId) => {
     setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
   };
 
+  // 👇 [NEW] Function to update quantity
+  const handleUpdateQuantity = (productId, newQuantity) => {
+    setCartItems(prevItems =>
+      prevItems.map(item =>
+        item.id === productId ? { ...item, quantity: Math.max(1, newQuantity) } : item // Ensure quantity is at least 1
+      )
+    );
+  };
+
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+
 
   return (
     <div className="min-h-screen flex flex-col">
-      <ScrollToTop/>
+      <ScrollToTop />
       <Header
         cartItemCount={cartCount}
         cartItems={cartItems}
@@ -50,7 +64,12 @@ const AppLayout = () => {
 
       <main className="flex-grow">
         {/* Outlet context के ज़रिए फ़ंक्शन को नीचे पास किया गया */}
-        <Outlet context={{ onAddToCart: handleAddToCart }} />
+        <Outlet context={{
+          cartItems, // Pass items if needed directly in cart page
+          onAddToCart: handleAddToCart,
+          removeFromCart: handleRemoveFromCart,
+          updateQuantity: handleUpdateQuantity // 👈 Pass the new function
+        }} />
       </main>
       <Footer />
     </div>

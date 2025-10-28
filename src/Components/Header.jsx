@@ -245,7 +245,7 @@ const Header = ({ cartItemCount = 0, cartItems = [], removeFromCart }) => {
                 <Link
                   to="/cart"
                   onClick={() => setIsCartOpen(false)}
-                  className="w-full block text-center py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition"
+                  className="w-full block text-center py-3 mb-10 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition"
                 >
                   Proceed to Checkout
                 </Link>

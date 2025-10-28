@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // Lucide Icons for representation
-import { Carrot, Flower, Apple, Leaf, Package, FlaskConical, Sun, Sprout } from 'lucide-react';
+import { Carrot, Flower, Apple, Leaf, Package, FlaskConical,TreeDeciduous, Sun, Sprout } from 'lucide-react';
 
 const categories = [
-  { name: 'Vegetable Seeds', icon: Carrot, path: '/shop/vegetables' },
-  { name: 'Flower Seeds', icon: Flower, path: '/shop/flowers' },
-  { name: 'Fruit Seeds', icon: Apple, path: '/shop/fruits' }, // Replaced Lemon with Apple
-  { name: 'Herbal Seeds', icon: Leaf, path: '/shop/herbal' },
-  { name: 'Exotic & Rare Seeds', icon: Sprout, path: '/shop/exotic' },
-  { name: 'Organic Fertilizers', icon: FlaskConical, path: '/shop/fertilizers' },
-  { name: 'Tools & Essentials', icon: Package, path: '/shop/tools' },
+  { name: 'Vegetable Seeds', icon: Carrot, path: '/seeds/vegetable' },
+  { name: 'Flower Seeds', icon: Flower, path: '/seeds/flower' },
+  { name: 'Fruit Seeds', icon: Apple, path: '/seeds/tree/fruit-seeds' }, // Replaced Lemon with Apple
+  { name: 'Herbal Seeds', icon: Leaf, path: '/seeds/herb' },
+  { name: 'Exotic & Rare Seeds', icon: Sprout, path: '/seeds/hybrid' },
+  { name: 'Agriculture Seeds', icon: TreeDeciduous, path: '/seeds/agriculture' },
+  // { name: 'Tools & Essentials', icon: Package, path: '/shop/tools' },
 ];
 
 const CategoryShowcase = () => {
@@ -29,7 +29,7 @@ const CategoryShowcase = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-7 lg:gap-6 text-center">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-6 lg:gap-6 text-center">
           {categories.map((category, index) => (
             <Link 
               key={index} 

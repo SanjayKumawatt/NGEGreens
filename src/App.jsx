@@ -44,6 +44,8 @@ import ForgotPasswordPage from './Pages/ForgotPasswordPage'
 import SignupPage from './Pages/SignupPage'
 import PrivacyPolicyPage from './Pages/PrivacyPolicyPage'
 import ShippingPolicyPage from './Pages/ShippingPolicyPage'
+import CartPage from './Pages/CartPage'
+import CheckoutPage from './Pages/CheckoutPage'
 
 const App = () => {
 
@@ -208,6 +210,14 @@ const App = () => {
         {
           path: "/shipping",
           element: <ShippingPolicyPage />
+        },
+        {
+          path: "/cart",
+          element: <CartPage />
+        },
+        {
+          path: "/checkout",
+          element: <CheckoutPage />
         },
       ]
     },

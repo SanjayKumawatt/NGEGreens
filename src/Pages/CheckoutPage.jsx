@@ -48,7 +48,7 @@ const CheckoutPage = () => {
         // Add more validation for payment if needed
 
         console.log("Placing Order with:", { shippingInfo, paymentInfo, cartItems, total });
-        alert("Order Placed Successfully! (Dummy)");
+        alert("Order Placed Successfully!");
         // TODO: Clear cart state in AppLayout (Need a function from context)
         // clearCart();
         navigate('/'); // Redirect to home after order
@@ -104,7 +104,7 @@ const CheckoutPage = () => {
                         {/* Payment Details Form (Dummy) */}
                         <div className="bg-white p-6 rounded-lg shadow-md">
                             <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                                <CreditCard className="w-5 h-5 mr-2 text-green-600" /> Payment Details (Dummy)
+                                <CreditCard className="w-5 h-5 mr-2 text-green-600" /> Payment Details 
                             </h2>
                             <div className="space-y-4">
                                 <div>

@@ -1,21 +1,19 @@
-// src/Layout/AppLayout.jsx (UPDATED)
-
+// src/Layout/AppLayout.jsx (FIXED)
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../Components/Header';
-import Footer from '../Components/Footer'; // Assuming Footer is imported/used below
+import Footer from '../Components/Footer';
 import ScrollToTop from '../Components/ScrollToTop';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // 👈 Important CSS import
 
 const AppLayout = () => {
-  // 1. कार्ट आइटम्स array और count state
+  // 1. Cart state
   const [cartItems, setCartItems] = useState([]);
 
-  // 1. [FIX] handleAddToCart: price को Number में कन्वर्ट करें
+  // ✅ FIXED: handleAddToCart
   const handleAddToCart = (productToAdd) => {
-    // सुनिश्चित करें कि price NUMERIC हो, भले ही यह डेटा में string हो
-    const numericPrice = Number(productToAdd.price);
-
-
+    const numericPrice = Number(productToAdd.price); // ensure numeric price
 
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.id === productToAdd.id);
@@ -27,51 +25,66 @@ const AppLayout = () => {
             : item
         );
       } else {
-        // यहाँ price को numericPrice से सेव करें
         return [...prevItems, { ...productToAdd, price: numericPrice, quantity: 1 }];
       }
     });
+
+    // ✅ toast notification placed correctly inside function
+    toast.success(`${productToAdd.name} added to cart!`, {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
-
-  // 2. [NEW] handleRemoveFromCart: डिलीट बटन के लिए
+  // 2. Remove item
   const handleRemoveFromCart = (productId) => {
     setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
   };
 
-  // 👇 [NEW] Function to update quantity
+  // 3. Update quantity
   const handleUpdateQuantity = (productId, newQuantity) => {
     setCartItems(prevItems =>
       prevItems.map(item =>
-        item.id === productId ? { ...item, quantity: Math.max(1, newQuantity) } : item // Ensure quantity is at least 1
+        item.id === productId
+          ? { ...item, quantity: Math.max(1, newQuantity) }
+          : item
       )
     );
   };
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
-
-
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
+
       <Header
         cartItemCount={cartCount}
         cartItems={cartItems}
-        removeFromCart={handleRemoveFromCart} // 👈 Header को Delete Function पास करें
+        removeFromCart={handleRemoveFromCart}
       />
-      {/* ... MegaMenuRow ... */}
 
       <main className="flex-grow">
-        {/* Outlet context के ज़रिए फ़ंक्शन को नीचे पास किया गया */}
-        <Outlet context={{
-          cartItems, // Pass items if needed directly in cart page
-          onAddToCart: handleAddToCart,
-          removeFromCart: handleRemoveFromCart,
-          updateQuantity: handleUpdateQuantity // 👈 Pass the new function
-        }} />
+        <Outlet
+          context={{
+            cartItems,
+            onAddToCart: handleAddToCart,
+            removeFromCart: handleRemoveFromCart,
+            updateQuantity: handleUpdateQuantity,
+          }}
+        />
       </main>
+
       <Footer />
+
+      {/* 👇 ToastContainer for notifications */}
+      <ToastContainer />
     </div>
   );
 };

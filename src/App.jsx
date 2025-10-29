@@ -47,6 +47,7 @@ import ShippingPolicyPage from './Pages/ShippingPolicyPage'
 import CartPage from './Pages/CartPage'
 import CheckoutPage from './Pages/CheckoutPage'
 
+
 const App = () => {
 
   const router = createBrowserRouter([
